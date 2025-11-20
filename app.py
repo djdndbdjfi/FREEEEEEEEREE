@@ -2,9 +2,9 @@ from flask import Flask, send_file
 import os
 import subprocess
 
-app = Flask("NR-CODEX")  # Server name here
+app = Flask("NR-CODEX")
 
-SSH_DIR = "/app/.ssh"
+SSH_DIR = "/tmp/.ssh"
 PRIVATE_KEY = f"{SSH_DIR}/id_ed25519"
 PUBLIC_KEY = f"{SSH_DIR}/id_ed25519.pub"
 
@@ -28,10 +28,11 @@ def home():
 
     return f"""
     <h1>🔐 NR-CODEX SSH Key Generator</h1>
+
     <h3>Your Public Key:</h3>
     <pre>{pub}</pre>
 
-    <p>Copy this public key into your VPS:</p>
+    <p>Put this key in your VPS:</p>
     <pre>~/.ssh/authorized_keys</pre>
 
     <a href="/download">
